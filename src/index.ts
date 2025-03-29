@@ -44,6 +44,9 @@ async function main() {
     results.forEach((result, index) => {
       console.log(`Thread ${index + 1} result: ${result}`);
     });
+  } catch (error) {
+    console.error("Error in main:", error);
+    process.exit(1);
   } finally {
     // Ensure threads are always cleaned up
     if (thread1) await thread1.terminate();
@@ -52,8 +55,4 @@ async function main() {
   }
 }
 
-// Use proper async error handling
-main().catch((error) => {
-  console.error("Error in main:", error);
-  process.exit(1);
-});
+main();
